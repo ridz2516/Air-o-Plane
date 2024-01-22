@@ -5,15 +5,16 @@
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "Zenject-TestFramework",
-        "ScriptChecker",
-        "com.unity.cinemachine.EditorTests"
+        "ScriptChecker"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
     "precompiledReferences": [
-        "nunit.framework.dll"
+        "nunit.framework.dll",
+        "Moq.dll",
+        "Castle.Core.dll"
     ],
     "autoReferenced": false,
     "defineConstraints": [

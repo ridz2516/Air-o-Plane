@@ -41,35 +41,34 @@ public class GamePlayInputPresenter : IInitializable, IDisposable, IFixedTickabl
         _HudController.OnInputUp -= OnInputUp;
     }
 
-    private void OnInputDown(Vector2 _mousePosition)
+    public void OnInputDown(Vector2 _mousePosition)
     {
         _IsInputDown = true;
         m_InputDownPosNormalized = m_LastInputPosNormalized = Input.mousePosition;
         
     }
 
-    private void OnInputUp()
+    public void OnInputUp()
     {
         _IsInputDown = false;
     }
-    //Runs like FixedUpdate
+
     public void FixedTick()
     {
-       
-        //_PlaneStateMoving.IsInputDown = _IsInputDown;
 
         if (_IsInputDown)
         {
-            m_Drag = (Input.mousePosition - m_InputDownPosNormalized) * _InputVars.DragSensitivity;
-            m_DeltaDrag = (Input.mousePosition - m_LastInputPosNormalized) * _InputVars.DragSensitivity;
+            SetInput(Input.mousePosition);
+        }
+    }
 
-            m_LastInputPosNormalized = Input.mousePosition;
-           // _PlaneStateMoving.Rotate(m_DeltaDrag);
-        }
-        else
-        {
-            //_PlaneStateMoving.ResetRotation();
-        }
+    public void SetInput(Vector3 _MousePos)
+    {
+
+        m_Drag = (_MousePos - m_InputDownPosNormalized) * _InputVars.DragSensitivity;
+        m_DeltaDrag = (_MousePos - m_LastInputPosNormalized) * _InputVars.DragSensitivity;
+
+        m_LastInputPosNormalized = _MousePos;
     }
 
     

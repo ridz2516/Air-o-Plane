@@ -1,25 +1,68 @@
-using System.Collections;
-using System.Collections.Generic;
+using Moq;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
 
 public class InputTest
 {
-    // A Test behaves as an ordinary method
     [Test]
-    public void InputTestSimplePasses()
+    public void OnInputDown_ShouldSetIsInputDownToTrue()
     {
-        // Use the Assert class to test conditions
+        // Arrange
+        var hudControllerMock = new Mock<HUDController>();
+        var inputVarsMock = new Mock<InputVariables>();
+
+        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object);
+
+        // Act
+        gamePlayInputPresenter.OnInputDown(Vector2.zero);
+
+        // Assert
+        Assert.IsTrue(gamePlayInputPresenter.IsInputDown);
+
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator InputTestWithEnumeratorPasses()
+    [Test]
+    public void OnInputUp_ShouldSetIsInputDownToFalse()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+        var hudControllerMock = new Mock<HUDController>();
+        var inputVarsMock = new Mock<InputVariables>();
+
+        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object);
+
+        gamePlayInputPresenter.OnInputUp();
+
+        Assert.IsFalse(gamePlayInputPresenter.IsInputDown);
     }
+
+    [Test]
+    public void FixedTick_WhenInputIsDown_ShouldSetDragAndDeltaDrag()
+    {
+        var hudControllerMock = new Mock<HUDController>();
+        var inputVarsMock = new Mock<InputVariables>();
+
+        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object);
+        gamePlayInputPresenter.OnInputDown(Vector2.zero);
+
+        gamePlayInputPresenter.SetInput(Vector2.up);
+
+        Assert.AreNotEqual(Vector2.zero, gamePlayInputPresenter.Drag);
+        Assert.AreNotEqual(Vector2.zero, gamePlayInputPresenter.DeltaDrag);
+    }
+
+    [Test]
+    public void FixedTick_WhenInputIsNotDown_ShouldSetZeroDragAndDeltaDrag()
+    {
+        var hudControllerMock = new Mock<HUDController>();
+        var inputVarsMock = new Mock<InputVariables>();
+
+        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object);
+        gamePlayInputPresenter.OnInputUp();
+
+        gamePlayInputPresenter.FixedTick();
+
+        Assert.AreEqual(Vector2.zero, gamePlayInputPresenter.Drag);
+        Assert.AreEqual(Vector2.zero, gamePlayInputPresenter.DeltaDrag);
+    }
+
+
 }
