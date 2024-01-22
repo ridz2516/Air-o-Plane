@@ -35,7 +35,11 @@ public class InputTest
     }
 
     [Test]
-    public void FixedTick_WhenInputIsDown_ShouldSetDragAndDeltaDrag()
+    [TestCase(0,0)]
+    [TestCase(0, 1)]
+    [TestCase(1, 0)]
+    [TestCase(3, 4)]
+    public void FixedTick_WhenInputIsDown_ShouldSetDragAndDeltaDrag(float _X, float _Y)
     {
         var hudControllerMock = new Mock<HUDController>();
         var inputVarsMock = new Mock<InputVariables>();
@@ -43,7 +47,7 @@ public class InputTest
         var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object);
         gamePlayInputPresenter.OnInputDown(Vector2.zero);
 
-        gamePlayInputPresenter.SetInput(Vector2.up);
+        gamePlayInputPresenter.SetInput(new Vector2(_X,_Y));
 
         Assert.AreNotEqual(Vector2.zero, gamePlayInputPresenter.Drag);
         Assert.AreNotEqual(Vector2.zero, gamePlayInputPresenter.DeltaDrag);
