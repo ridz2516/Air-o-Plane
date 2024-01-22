@@ -15,12 +15,12 @@ MonoBehaviour:
   Player:
     PlaneIdleSettings:
       StartOffset: {x: 0, y: 0, z: 0}
-      Amplitude: 0.1
-      Frequency: 3
+      Amplitude: 0.01
+      Frequency: 50
     PlaneMovingSettings:
-      _ForwardSpeed: 7
+      _ForwardSpeed: 4
       _RotationSpeed: 10
-      _AngleLimit: 20
-      _MaxHeightOffset: 0
+      _AngleLimit: 40
+      _MaxHeightOffset: 1
   Input:
     DragSensitivity: 1
