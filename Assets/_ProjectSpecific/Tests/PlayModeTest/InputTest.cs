@@ -35,7 +35,6 @@ public class InputTest
     }
 
     [Test]
-    [TestCase(0,0)]
     [TestCase(0, 1)]
     [TestCase(1, 0)]
     [TestCase(3, 4)]

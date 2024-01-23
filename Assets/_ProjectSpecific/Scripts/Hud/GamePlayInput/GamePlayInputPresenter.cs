@@ -64,7 +64,6 @@ public class GamePlayInputPresenter : IInitializable, IDisposable, IFixedTickabl
 
     public void SetInput(Vector3 _MousePos)
     {
-        Debug.Log(m_InputDownPosNormalized);
         m_Drag = (_MousePos - m_InputDownPosNormalized) * _InputVars.DragSensitivity;
         m_DeltaDrag = (_MousePos - m_LastInputPosNormalized) * _InputVars.DragSensitivity;
 

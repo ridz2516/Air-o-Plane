@@ -24,3 +24,6 @@ MonoBehaviour:
       _MaxHeightOffset: 1
   Input:
     DragSensitivity: 1
+  Environment:
+    ParkObstacleSettings:
+      ParkObstacleObject: {fileID: 8985325341478048017, guid: 5f67c4ed10b174d078587efe755d9a95, type: 3}

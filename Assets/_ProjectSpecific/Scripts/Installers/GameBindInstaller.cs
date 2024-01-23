@@ -5,11 +5,12 @@ using Zenject;
 
 public class GameBindInstaller : MonoInstaller
 {
-    
+    [SerializeField] GameObject Object;
     public override void InstallBindings()
     {
         InstallPlayer();
         InstallPresenter();
+        InstallEnvironment();
     }
 
     public void InstallPlayer()
@@ -28,6 +29,12 @@ public class GameBindInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<GamePlayInputPresenter>().AsSingle();
         
     }
+
+    public void InstallEnvironment()
+    {
+        Container.Bind<EnvironmentFactory>().AsSingle();
+    }
+    
 
 
 }
