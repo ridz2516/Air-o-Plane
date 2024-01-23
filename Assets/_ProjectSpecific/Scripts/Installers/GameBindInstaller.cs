@@ -33,6 +33,7 @@ public class GameBindInstaller : MonoInstaller
     public void InstallEnvironment()
     {
         Container.Bind<EnvironmentFactory>().AsSingle();
+        Container.BindInterfacesAndSelfTo<EnvironmentLooper>().AsTransient();
     }
     
 

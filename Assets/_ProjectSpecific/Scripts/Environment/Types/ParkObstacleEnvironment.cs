@@ -6,35 +6,47 @@ using Zenject;
 public class ParkObstacleEnvironment : Environment
 {
 
-    IPlayerMovementHandler _IMovementHandlerPlayer;
+    ILooper _EnvironmentLooper;
+    Setting _Setting;
 
     [Inject]
-    public void Construct(IPlayerMovementHandler _IMovementHandlerPlayer)
+    public void Construct(ILooper _environmentLooper, Setting _Setting)
     {
-        this._IMovementHandlerPlayer = _IMovementHandlerPlayer;
+        _EnvironmentLooper = _environmentLooper;
+        this._Setting = _Setting;
+    }
+
+    #region Init
+
+    private void Start()
+    {
+        Activate();
+    }
+
+    #endregion Init
+
+    private void Update()
+    {
+        if(_EnvironmentLooper != null)
+        {
+            _EnvironmentLooper.UpdateDistance(0.1f);
+        }
     }
 
     public override void Activate()
     {
-        Debug.Log("ParkObstacle Activated");
+
+        AllChildEnvironment = GetComponentsInChildren<IEnvironmentChunk>(true);
+        _EnvironmentLooper.UpdateElements(AllChildEnvironment,_Setting.MaxDistanceBetweenEnvironment);
+        
     }
 
-    public override void DeActivate()
-    {
-    }
-
-    public override void LoadNext()
-    {
-    }
-
-    public override void UpdateDistance(float i_LoopDistance)
-    {
-    }
 
     [Serializable]
     public class Setting
     {
         public GameObject ParkObstacleObject;
+        public float MaxDistanceBetweenEnvironment = 10;
     }
 
     public class Factory : PlaceholderFactory<ParkObstacleEnvironment> { }

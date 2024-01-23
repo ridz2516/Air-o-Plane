@@ -1,50 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class EnvironmentLooper<T> : ILooper where T : Component
+public class EnvironmentLooper : ILooper
 {
-    private T[] elements;
+    readonly IPlayerMovementHandler _IMovementPlayer;
+
+    private IEnvironmentChunk[] elements;
     private int currentIndex = 0;
+    private int futureIndex = 0;
+    private float _distanceBetweenEnvironment;
 
-    public EnvironmentLooper(T[] elements)
+    public EnvironmentLooper(IPlayerMovementHandler _IMovementPlayer)
     {
-        this.elements = elements;
+        this._IMovementPlayer = _IMovementPlayer;
+    }
 
-        if (this.elements.Length > 0)
-        {
-            ActivateElement(currentIndex);
-        }
-        else
-        {
-            Debug.LogError($"No elements assigned to {typeof(T).Name}Looper!");
-        }
+    public void Initialize()
+    {
+        deactivateElement();
+
+        futureIndex = (currentIndex + 1) % elements.Length;
+        activateElement(futureIndex);
+        activateElement(currentIndex);
+
+        elements[futureIndex].SetPosition(elements[currentIndex].GetEndPoint().position + new Vector3(_distanceBetweenEnvironment, 0, 0));
+
     }
 
     public void UpdateDistance(float loopDistance)
     {
-        float distanceToNext = Vector3.Distance(Vector3.zero, elements[currentIndex].transform.position);
+        float distanceToNext = elements[currentIndex].GetEndPoint().position.x - _IMovementPlayer.Position.x;
 
-        if (distanceToNext >= loopDistance)
+        if (distanceToNext <= loopDistance)
         {
-            DeactivateElement(currentIndex);
+            deactivateElement();
             currentIndex = (currentIndex + 1) % elements.Length;
-            ActivateElement(currentIndex);
+            futureIndex = (currentIndex + 1) % elements.Length;
+            activateElement(futureIndex);
+            activateElement(currentIndex);
+
+            elements[futureIndex].SetPosition(elements[currentIndex].GetEndPoint().position + new Vector3(_distanceBetweenEnvironment, 0, 0));
         }
     }
 
-    private void ActivateElement(int index)
+    public void UpdateElements(IEnvironmentChunk[] _newElements, float _distance)
     {
-        elements[index].gameObject.SetActive(true);
+        elements = _newElements;
+        _distanceBetweenEnvironment = _distance;
+        Initialize();
     }
 
-    private void DeactivateElement(int index)
+    private void activateElement(int index)
     {
-        elements[index].gameObject.SetActive(false);
+        elements[index].GetMainObject().SetActive(true);
+    }
+
+    private void deactivateElement()
+    {
+        foreach (var item in elements)
+        {
+            item.GetMainObject().SetActive(false);
+        }
     }
 }
 
-public interface ILooper
-{
-    void UpdateDistance(float loopDistance);
-}
+

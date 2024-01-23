@@ -19,6 +19,11 @@ public class GameConfig : ScriptableObjectInstaller<GameConfig>
         Container.BindFactory<ParkObstacleEnvironment, ParkObstacleEnvironment.Factory>()
                .FromComponentInNewPrefab(Environment.ParkObstacleSettings.ParkObstacleObject)
                .UnderTransformGroup("Environment");
+
+        Container.BindInstance(Environment.ParkBackgroundSettings);
+        Container.BindFactory<ParkBackgroundEnvironment, ParkBackgroundEnvironment.Factory>()
+               .FromComponentInNewPrefab(Environment.ParkBackgroundSettings.ParkBackgroundObject)
+               .UnderTransformGroup("Environment");
     }
 
 }
@@ -40,6 +45,7 @@ public class InputVariables
 public class EnvironmentConfig
 {
     public ParkObstacleEnvironment.Setting ParkObstacleSettings;
+    public ParkBackgroundEnvironment.Setting ParkBackgroundSettings;
 }
 
 

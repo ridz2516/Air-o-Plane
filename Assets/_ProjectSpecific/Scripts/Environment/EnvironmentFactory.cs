@@ -13,10 +13,10 @@ public class EnvironmentFactory : IEnvironmentFactory
     readonly ParkObstacleEnvironment.Factory _ParkObstacleFactory;
     readonly ParkBackgroundEnvironment.Factory _ParkBackgroundFactory;
 
-    public EnvironmentFactory(ParkObstacleEnvironment.Factory _ParkObstacleFactory)//, ParkBackgroundEnvironment.Factory _ParkBackgroundFactory)
+    public EnvironmentFactory(ParkObstacleEnvironment.Factory _ParkObstacleFactory, ParkBackgroundEnvironment.Factory _ParkBackgroundFactory)
     {
         this._ParkObstacleFactory = _ParkObstacleFactory;
-       // this._ParkBackgroundFactory = _ParkBackgroundFactory;
+        this._ParkBackgroundFactory = _ParkBackgroundFactory;
     }
 
     public Environment CreateEnvironment(eEnvironmentType environmentType)
@@ -25,6 +25,8 @@ public class EnvironmentFactory : IEnvironmentFactory
         {
             case eEnvironmentType.ParkObstacles:
                 return _ParkObstacleFactory.Create();
+            case eEnvironmentType.ParkBackground:
+                return _ParkBackgroundFactory.Create();
         }
         return null;
     }

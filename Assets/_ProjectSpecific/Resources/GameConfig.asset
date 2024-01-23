@@ -18,7 +18,7 @@ MonoBehaviour:
       Amplitude: 0.01
       Frequency: 50
     PlaneMovingSettings:
-      _ForwardSpeed: 4
+      _ForwardSpeed: 6
       _RotationSpeed: 10
       _AngleLimit: 40
       _MaxHeightOffset: 1
@@ -27,3 +27,7 @@ MonoBehaviour:
   Environment:
     ParkObstacleSettings:
       ParkObstacleObject: {fileID: 8985325341478048017, guid: 5f67c4ed10b174d078587efe755d9a95, type: 3}
+      MaxDistanceBetweenEnvironment: 6
+    ParkBackgroundSettings:
+      ParkBackgroundObject: {fileID: 5667593349049114233, guid: 250422de619804beaa8881d828f75a62, type: 3}
+      MaxDistanceBetweenEnvironment: 30

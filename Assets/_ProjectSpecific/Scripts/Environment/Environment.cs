@@ -2,15 +2,11 @@
 using UnityEngine;
 using Zenject;
 
-public abstract class Environment : MonoBehaviour, ILooper
+public abstract class Environment : MonoBehaviour
 {
-    [SerializeField] protected GameObject[] AllChildEnvironment;
+    [SerializeField] protected IEnvironmentChunk[] AllChildEnvironment;
+    protected int _currentIndex;
 
     public abstract void Activate();
-    public abstract void DeActivate();
-    public abstract void LoadNext();
 
-    public virtual void UpdateDistance(float loopDistance)
-    {
-    }
 }

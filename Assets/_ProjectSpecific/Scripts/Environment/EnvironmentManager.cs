@@ -31,7 +31,10 @@ public class EnvironmentManager : MonoBehaviour
 
     public void Start()
     {
-        _EnvironmentFactory.CreateEnvironment(eEnvironmentType.ParkObstacles);
+        foreach (var item in _EnvironmentType)
+        {
+            _EnvironmentFactory.CreateEnvironment(item);
+        }
     }
 
     #endregion Init
