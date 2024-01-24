@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using Zenject;
+using Moq;
 
 public class EnvironmentFactoryTest : ZenjectIntegrationTestFixture
 {
@@ -12,8 +13,15 @@ public class EnvironmentFactoryTest : ZenjectIntegrationTestFixture
         PreInstall();
 
         Container.Bind<EnvironmentFactory>().AsSingle();
+
+        Container.Bind<ILooper>().To<MockLooper>().AsSingle();
+        var setting = new ParkObstacleEnvironment.Setting();
+        Container.BindInstance(setting);
+
         Container.BindFactory<ParkObstacleEnvironment, ParkObstacleEnvironment.Factory>()
                .FromComponentInNewPrefabResource("Test/ParkObstacleEnvironment");
+        
+
         Container.Bind<IInitializable>().To<ParkRunner>().AsSingle();
 
         PostInstall();
@@ -25,12 +33,30 @@ public class EnvironmentFactoryTest : ZenjectIntegrationTestFixture
         PreInstall();
 
         Container.Bind<EnvironmentFactory>().AsSingle();
+        Container.Bind<ILooper>().To<MockLooper>().AsSingle();
+        var setting = new ParkBackgroundEnvironment.Setting();
+        Container.BindInstance(setting);
+
         Container.BindFactory<ParkBackgroundEnvironment, ParkBackgroundEnvironment.Factory>()
                .FromComponentInNewPrefabResource("Test/ParkBackGround");
+        Container.BindFactory<ParkObstacleEnvironment, ParkObstacleEnvironment.Factory>()
+              .FromComponentInNewPrefabResource("Test/ParkObstacleEnvironment");
         Container.Bind<IInitializable>().To<ParkRunner2>().AsSingle();
 
         PostInstall();
     }
+
+    public class MockLooper : ILooper
+    {
+        public void UpdateDistance(float loopDistance)
+        {
+        }
+
+        public void UpdateElements(IEnvironmentChunk[] _newElements, float _distance)
+        {
+        }
+    }
+
     public class ParkRunner : IInitializable
     {
         readonly EnvironmentFactory _Factory;
