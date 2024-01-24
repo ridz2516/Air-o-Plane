@@ -11,33 +11,54 @@ public class PlayerPlane : MonoBehaviour, IPlayerController, IPlayerStatesHandle
 
     private PlaneStateFactory _PlaneStateFactory;
     private PlaneState _PlayerState;
+    private SignalBus _SignalBus;
 
     private ePlaneStates _CurrentPlaneState;
+    private Vector3 _InitialPosition;
+
+
 
     #endregion Data
 
     #region Initialize
 
     [Inject]
-    public void Construct(PlaneStateFactory _PlaneStateFactory)
+    public void Construct(PlaneStateFactory _PlaneStateFactory, SignalBus _SignalBus)
     {
         this._PlaneStateFactory = _PlaneStateFactory;
-
+        this._SignalBus = _SignalBus;
     }
 
     private void Start()
     {
+        _SignalBus.Subscribe<GameManager.OnLevelStarted>(OnLevelStarted);
+        _SignalBus.Subscribe<GameManager.OnLevelRestart>(OnLevelReset);
+
+        _InitialPosition = transform.position;
         ChangeState(ePlaneStates.Idle);
     }
 
-
     #endregion Initialize
+
+    #region Events
+
+    private void OnLevelStarted()
+    {
+        ChangeState(ePlaneStates.TakeOff);
+    }
+
+    private void OnLevelReset()
+    {
+        ResetPlayer();
+    }
+    #endregion Events
 
     #region Unity Loop
 
     private void Update()
     {
         _PlayerState.Update();
+
     }
 
     #endregion Unity Loop
@@ -93,5 +114,11 @@ public class PlayerPlane : MonoBehaviour, IPlayerController, IPlayerStatesHandle
 
         _PlayerState = _PlaneStateFactory.CreateState(_eType);
         _PlayerState.Start();
+    }
+
+    public void ResetPlayer()
+    {
+        Position = _InitialPosition;
+        ChangeState(ePlaneStates.Idle);
     }
 }

@@ -8,6 +8,7 @@ public class PlaneStateDead : PlaneState
     readonly Settings           _Settings;
     readonly Explosion.Factory  _explosionFactory;
     readonly Smoke.Factory      _SmokeFactory;
+    readonly GameManager        _GameManager;
 
     private float _JumpStartTime;
     private float _StartYPos;
@@ -17,12 +18,14 @@ public class PlaneStateDead : PlaneState
     public PlaneStateDead(IPlayerController _IPlayerController,
         Settings _Settings,
         Explosion.Factory _explosionFactory,
-        Smoke.Factory _SmokeFactory)
+        Smoke.Factory _SmokeFactory,
+        GameManager _GameManager)
     {
         this._IPlayerController = _IPlayerController;
         this._Settings = _Settings;
         this._explosionFactory = _explosionFactory;
         this._SmokeFactory = _SmokeFactory;
+        this._GameManager = _GameManager;
     }
 
     public override void Start()
@@ -32,6 +35,7 @@ public class PlaneStateDead : PlaneState
         _StartYPos = _IPlayerController.Position.y;
 
         explode();
+        _GameManager.LevelFinished();
     }
 
     public override void Update()

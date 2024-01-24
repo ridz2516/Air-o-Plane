@@ -23,6 +23,9 @@ public class PlaneStateIdle : PlaneState
         _StartingPosition = _MovementHandler.Position;
 
         _MovementHandler.Rotation = Quaternion.Euler(-11.05f, 90, 0);
+
+        _MovementHandler.SetAnimation(eAnimation.Idle);
+        _MovementHandler.TrailRenderer.emitting = false;
     }
     public override void Update()
     {

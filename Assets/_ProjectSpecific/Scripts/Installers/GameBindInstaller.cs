@@ -8,9 +8,17 @@ public class GameBindInstaller : MonoInstaller
     [SerializeField] GameObject Object;
     public override void InstallBindings()
     {
+        InstallGameManager();
         InstallPlayer();
         InstallPresenter();
         InstallEnvironment();
+
+        GameSignalInstaller.Install(Container);
+    }
+
+    public void InstallGameManager()
+    {
+        Container.Bind<GameManager>().AsSingle();
     }
 
     public void InstallPlayer()
@@ -28,7 +36,7 @@ public class GameBindInstaller : MonoInstaller
     {
         Container.BindInterfacesAndSelfTo<LevelStartPresenter>().AsSingle();
         Container.BindInterfacesAndSelfTo<GamePlayInputPresenter>().AsSingle();
-        
+        Container.BindInterfacesAndSelfTo<LevelFinishPresenter>().AsSingle();
     }
 
     public void InstallEnvironment()

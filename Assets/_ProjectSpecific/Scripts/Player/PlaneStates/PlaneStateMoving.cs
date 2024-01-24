@@ -6,10 +6,11 @@ public class PlaneStateMoving : PlaneState, IMovementControl
 {
     #region Data
 
-    readonly Settings _settings;
-    readonly IPlayerController _PlayerMovementHandler;
+    readonly Settings               _settings;
+    readonly IPlayerController      _PlayerMovementHandler;
     readonly GamePlayInputPresenter _GameInputPresenter;
     readonly IPlayerStatesHandler   _PlayStatesHandler;
+    
 
     float _CurrentRotation;
     float _UpperLimit;
@@ -19,7 +20,10 @@ public class PlaneStateMoving : PlaneState, IMovementControl
 
     #region Constructor
 
-    public PlaneStateMoving(Settings _settings, IPlayerController _PlayerMovementHandler, GamePlayInputPresenter _GameInputPresenter, IPlayerStatesHandler _PlayStatesHandler)
+    public PlaneStateMoving(Settings _settings,
+        IPlayerController _PlayerMovementHandler,
+        GamePlayInputPresenter _GameInputPresenter,
+        IPlayerStatesHandler _PlayStatesHandler)
     {
         this._settings = _settings;
         this._PlayerMovementHandler = _PlayerMovementHandler;
@@ -30,6 +34,11 @@ public class PlaneStateMoving : PlaneState, IMovementControl
     #endregion Constructor
 
     #region Init
+
+    public override void Start()
+    {
+        _PlayerMovementHandler.TrailRenderer.emitting = true;
+    }
 
 
     #endregion Init

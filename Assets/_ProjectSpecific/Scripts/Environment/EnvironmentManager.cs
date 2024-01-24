@@ -16,6 +16,7 @@ public class EnvironmentManager : MonoBehaviour
 
     [SerializeField] private eEnvironmentType[] _EnvironmentType;
 
+    private SignalBus _SignalBus;
     private EnvironmentFactory _EnvironmentFactory;
     private List<Environment> _Environments = new List<Environment>();
 
@@ -24,24 +25,45 @@ public class EnvironmentManager : MonoBehaviour
     #region Init
 
     [Inject]
-    public void Construct(EnvironmentFactory _EnvironmentFactory)
+    public void Construct(EnvironmentFactory _EnvironmentFactory, SignalBus _SignalBus)
     {
         this._EnvironmentFactory = _EnvironmentFactory;
+        this._SignalBus = _SignalBus;
     }
 
     public void Start()
     {
+        _SignalBus.Subscribe<GameManager.OnLevelRestart>(OnLevelReset);
+
         foreach (var item in _EnvironmentType)
         {
-            _EnvironmentFactory.CreateEnvironment(item);
+            _Environments.Add(_EnvironmentFactory.CreateEnvironment(item));
         }
     }
 
     #endregion Init
 
+    private void OnLevelReset()
+    {
+        Reset();
+    }
+
+    public void Update()
+    {
+    }
+
     public void Reset()
     {
-        
+        foreach (var item in _Environments)
+        {
+            if(item)
+                Destroy(item.gameObject);
+        }
+
+        foreach (var item in _EnvironmentType)
+        {
+            _Environments.Add(_EnvironmentFactory.CreateEnvironment(item));
+        }
     }
 }
 
