@@ -7,5 +7,6 @@ public interface IPlayerController
     public Vector3 GetForward { get; }
     public Vector3 LocalEular { get; set; }
     public void SetAnimation(eAnimation _animation);
+    public TrailRenderer TrailRenderer { get; set; }
 }
 

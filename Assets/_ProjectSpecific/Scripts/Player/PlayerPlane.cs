@@ -7,6 +7,7 @@ public class PlayerPlane : MonoBehaviour, IPlayerController, IPlayerStatesHandle
     #region Data
 
     [SerializeField] private Animator _PlaneAnimation;
+    [SerializeField] private TrailRenderer _TrailRenderer;
 
     private PlaneStateFactory _PlaneStateFactory;
     private PlaneState _PlayerState;
@@ -55,6 +56,11 @@ public class PlayerPlane : MonoBehaviour, IPlayerController, IPlayerStatesHandle
         _PlaneAnimation.SetTrigger(_eAnimation.ToString());
     }
 
+    public TrailRenderer TrailRenderer
+    {
+        get => _TrailRenderer;
+        set => _TrailRenderer = value;
+    }
 
     public Vector3 Position
     {

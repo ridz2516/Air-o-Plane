@@ -52,6 +52,7 @@ public class PlaneStateDead : PlaneState
         explosion.transform.position = _IPlayerController.Position;
 
         _Smoke = _SmokeFactory.Create();
+        _IPlayerController.TrailRenderer.emitting = false;
     }
 
     [Serializable]

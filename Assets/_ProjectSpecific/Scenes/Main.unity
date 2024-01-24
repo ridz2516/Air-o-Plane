@@ -1932,6 +1932,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 225709022191318925, guid: afc803e1c540c4f0686f131e627bc623, type: 3}
+      propertyPath: _EnvironmentType.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 225709022191318925, guid: afc803e1c540c4f0686f131e627bc623, type: 3}
+      propertyPath: _EnvironmentType.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 225709022191318926, guid: afc803e1c540c4f0686f131e627bc623, type: 3}
       propertyPath: m_RootOrder
       value: 6
