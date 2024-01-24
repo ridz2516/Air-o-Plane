@@ -5,14 +5,14 @@ using Zenject;
 
 public class EnvironmentLooper : ILooper
 {
-    readonly IPlayerMovementHandler _IMovementPlayer;
+    readonly IPlayerController _IMovementPlayer;
 
     private IEnvironmentChunk[] elements;
     private int currentIndex = 0;
     private int futureIndex = 0;
     private float _distanceBetweenEnvironment;
 
-    public EnvironmentLooper(IPlayerMovementHandler _IMovementPlayer)
+    public EnvironmentLooper(IPlayerController _IMovementPlayer)
     {
         this._IMovementPlayer = _IMovementPlayer;
     }

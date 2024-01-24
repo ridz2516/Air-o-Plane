@@ -7,7 +7,7 @@ public class PlaneStateTakeOff : PlaneState
     #region Data
 
     readonly Settings _settings;
-    readonly IPlayerMovementHandler _PlayerMovementHandler;
+    readonly IPlayerController _PlayerMovementHandler;
     readonly IPlayerStatesHandler _PlayerStatesHandler;
     readonly GamePlayInputPresenter _GameInputPresenter;
 
@@ -18,7 +18,7 @@ public class PlaneStateTakeOff : PlaneState
 
     #region Constructor
 
-    public PlaneStateTakeOff(Settings _settings, IPlayerMovementHandler _PlayerMovementHandler, IPlayerStatesHandler _PlayerStatesHandler, GamePlayInputPresenter _GameInputPresenter)
+    public PlaneStateTakeOff(Settings _settings, IPlayerController _PlayerMovementHandler, IPlayerStatesHandler _PlayerStatesHandler, GamePlayInputPresenter _GameInputPresenter)
     {
         this._settings = _settings;
         this._PlayerMovementHandler = _PlayerMovementHandler;

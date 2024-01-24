@@ -2,9 +2,11 @@
 using UnityEngine;
 using Zenject;
 
-public class PlayerPlane : MonoBehaviour, IPlayerMovementHandler, IPlayerStatesHandler
+public class PlayerPlane : MonoBehaviour, IPlayerController, IPlayerStatesHandler
 {
     #region Data
+
+    [SerializeField] private Animator _PlaneAnimation;
 
     private PlaneStateFactory _PlaneStateFactory;
     private PlaneState _PlayerState;
@@ -38,6 +40,20 @@ public class PlayerPlane : MonoBehaviour, IPlayerMovementHandler, IPlayerStatesH
     }
 
     #endregion Unity Loop
+
+    #region Unity Physics
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        _PlayerState.OnTriggerEnter(collision);
+    }
+
+    #endregion Unity Physics
+
+    public void SetAnimation(eAnimation _eAnimation)
+    {
+        _PlaneAnimation.SetTrigger(_eAnimation.ToString());
+    }
 
 
     public Vector3 Position

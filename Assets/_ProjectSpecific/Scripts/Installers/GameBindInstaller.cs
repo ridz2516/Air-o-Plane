@@ -19,8 +19,8 @@ public class GameBindInstaller : MonoInstaller
 
         Container.BindFactory<PlaneStateIdle, PlaneStateIdle.Factory>().WhenInjectedInto<PlaneStateFactory>();
         Container.BindFactory<PlaneStateTakeOff, PlaneStateTakeOff.Factory>().WhenInjectedInto<PlaneStateFactory>();
-
-        Container.Bind(typeof(IPlayerMovementHandler), typeof(IPlayerStatesHandler)).To<PlayerPlane>().FromComponentInHierarchy().AsSingle();
+        Container.BindFactory<PlaneStateDead, PlaneStateDead.Factory>().WhenInjectedInto<PlaneStateFactory>();
+        Container.Bind(typeof(IPlayerController), typeof(IPlayerStatesHandler)).To<PlayerPlane>().FromComponentInHierarchy().AsSingle();
         Container.BindFactory<PlaneStateMoving, PlaneStateMoving.Factory>().WhenInjectedInto<PlaneStateFactory>();
     }
 

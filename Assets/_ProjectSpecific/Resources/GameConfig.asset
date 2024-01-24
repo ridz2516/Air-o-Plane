@@ -23,10 +23,48 @@ MonoBehaviour:
       _AngleLimit: 40
       _MaxHeightOffset: 1
     PlaneTakeOffSettings:
-      ForwardIncreaseSpeed: 1
+      ForwardIncreaseSpeed: 8
       ForwardMaxSpeed: 6
       MaxDistanceToChangeState: 2
-      RotationResetSpeed: 2
+      RotationResetSpeed: 3
+    PlaneStateDeadSettings:
+      FallDownAnimCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 24.22959
+          outSlope: 24.22959
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.39430106
+        - serializedVersion: 3
+          time: 0.34871832
+          value: 2.3474228
+          inSlope: -13.7907095
+          outSlope: -13.7907095
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: -20
+          inSlope: -34.312992
+          outSlope: -34.312992
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      JumpHeight: 1
+      JumpDuration: 2
+    PlayerDeathEffect: {fileID: 6510154188001029539, guid: a17452023896241b79a9ed92bb125cd8, type: 3}
+    SmokeEffect: {fileID: 3806303252187749753, guid: 2b7a350ab05c14773bffb63955742c53, type: 3}
   Input:
     DragSensitivity: 1
   Environment:

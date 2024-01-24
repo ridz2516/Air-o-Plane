@@ -6,12 +6,12 @@ using Zenject;
 public class PlaneStateIdle : PlaneState
 {
     readonly Settings _settings;
-    readonly IPlayerMovementHandler _MovementHandler;
+    readonly IPlayerController _MovementHandler;
 
     Vector3 _StartingPosition;
     float _theta;
 
-    public PlaneStateIdle(Settings _settings, IPlayerMovementHandler _MovementHandler)
+    public PlaneStateIdle(Settings _settings, IPlayerController _MovementHandler)
     {
         this._settings = _settings;
         this._MovementHandler = _MovementHandler;

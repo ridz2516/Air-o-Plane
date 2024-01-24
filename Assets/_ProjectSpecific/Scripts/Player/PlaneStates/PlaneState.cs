@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class PlaneState: IDisposable
 {
-    readonly IPlayerMovementHandler _PlayerShip;
+    readonly IPlayerController _PlayerShip;
 
     public abstract void Update();
 
@@ -11,5 +11,5 @@ public abstract class PlaneState: IDisposable
 
     public virtual void Dispose(){}
 
-    public virtual void OnTriggerEnter(Collider other) { }
+    public virtual void OnTriggerEnter(Collider2D other) { }
 }

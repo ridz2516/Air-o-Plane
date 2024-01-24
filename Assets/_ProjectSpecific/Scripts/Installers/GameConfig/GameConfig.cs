@@ -14,6 +14,20 @@ public class GameConfig : ScriptableObjectInstaller<GameConfig>
         Container.BindInstance(Player.PlaneIdleSettings);
         Container.BindInstance(Player.PlaneMovingSettings);
         Container.BindInstance(Player.PlaneTakeOffSettings);
+        Container.BindInstance(Player.PlaneStateDeadSettings);
+
+        Container.BindFactory<Explosion, Explosion.Factory>()
+                .FromPoolableMemoryPool<Explosion, ExplosionPool>(poolBinder => poolBinder
+                    .WithInitialSize(2)
+                    .FromComponentInNewPrefab(Player.PlayerDeathEffect)
+                    .UnderTransformGroup("Explosions"));
+
+        Container.BindFactory<Smoke, Smoke.Factory>()
+                .FromPoolableMemoryPool<Smoke, SmokePool>(poolBinder => poolBinder
+                    .WithInitialSize(1)
+                    .FromComponentInNewPrefab(Player.SmokeEffect)
+                    .UnderTransformGroup("Smoke"));
+
         Container.BindInstance(Input);
 
         Container.BindInstance(Environment.ParkObstacleSettings);
@@ -27,6 +41,14 @@ public class GameConfig : ScriptableObjectInstaller<GameConfig>
                .UnderTransformGroup("Environment");
     }
 
+    class ExplosionPool : MonoPoolableMemoryPool<IMemoryPool, Explosion>
+    {
+    }
+
+    class SmokePool : MonoPoolableMemoryPool<IMemoryPool, Smoke>
+    {
+    }
+
 }
 
 [Serializable]
@@ -35,7 +57,10 @@ public class PlayerVariables
     public PlaneStateIdle.Settings      PlaneIdleSettings;
     public PlaneStateMoving.Settings    PlaneMovingSettings;
     public PlaneStateTakeOff.Settings   PlaneTakeOffSettings;
+    public PlaneStateDead.Settings      PlaneStateDeadSettings;
 
+    public GameObject PlayerDeathEffect;
+    public GameObject SmokeEffect;
 }
 
 [Serializable]

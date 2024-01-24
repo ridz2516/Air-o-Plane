@@ -7,8 +7,9 @@ public class PlaneStateMoving : PlaneState, IMovementControl
     #region Data
 
     readonly Settings _settings;
-    readonly IPlayerMovementHandler _PlayerMovementHandler;
+    readonly IPlayerController _PlayerMovementHandler;
     readonly GamePlayInputPresenter _GameInputPresenter;
+    readonly IPlayerStatesHandler   _PlayStatesHandler;
 
     float _CurrentRotation;
     float _UpperLimit;
@@ -18,11 +19,12 @@ public class PlaneStateMoving : PlaneState, IMovementControl
 
     #region Constructor
 
-    public PlaneStateMoving(Settings _settings, IPlayerMovementHandler _PlayerMovementHandler, GamePlayInputPresenter _GameInputPresenter)
+    public PlaneStateMoving(Settings _settings, IPlayerController _PlayerMovementHandler, GamePlayInputPresenter _GameInputPresenter, IPlayerStatesHandler _PlayStatesHandler)
     {
         this._settings = _settings;
         this._PlayerMovementHandler = _PlayerMovementHandler;
         this._GameInputPresenter = _GameInputPresenter;
+        this._PlayStatesHandler = _PlayStatesHandler;
     }
 
     #endregion Constructor
@@ -49,6 +51,18 @@ public class PlaneStateMoving : PlaneState, IMovementControl
     }
 
     #endregion Unity Loop
+
+    #region Physics
+
+    public override void OnTriggerEnter(Collider2D other)
+    {
+        if (other.CompareTag(nameof(eTags.Environment)))
+        {
+            _PlayStatesHandler.ChangeState(ePlaneStates.Dead);
+        }
+    }
+
+    #endregion Physics
 
     public void Move()
     {
