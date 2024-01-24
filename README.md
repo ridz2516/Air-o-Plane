@@ -1,5 +1,5 @@
 <h1 align="center">
-Air-o-PlaneProject 🛩️
+Air-o-Plane Project 🛩️
 </h1>
 
 ## Hello Fellow Detectives! 👋
