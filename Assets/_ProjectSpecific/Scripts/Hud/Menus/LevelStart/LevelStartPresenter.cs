@@ -28,6 +28,6 @@ public class LevelStartPresenter : IInitializable, IDisposable
     private void onPlayButtonClick()
     {
         _LevelStart.Hide();
-        _IPlayerState.ChangeState(ePlaneStates.Moving);
+        _IPlayerState.ChangeState(ePlaneStates.TakeOff);
     }
 }

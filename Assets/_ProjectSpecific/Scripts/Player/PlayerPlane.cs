@@ -52,6 +52,12 @@ public class PlayerPlane : MonoBehaviour, IPlayerMovementHandler, IPlayerStatesH
         set => transform.localRotation = value;
     }
 
+    public Vector3 LocalEular
+    {
+        get => transform.localEulerAngles;
+        set => transform.localEulerAngles = value;
+    }
+
     public Vector3 GetForward => transform.forward;
 
     public ePlaneStates CurrentState => _CurrentPlaneState;

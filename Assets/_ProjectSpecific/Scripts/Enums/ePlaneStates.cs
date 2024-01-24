@@ -3,7 +3,7 @@
 public enum ePlaneStates
 {
     Idle,
-    PreMove,
+    TakeOff,
     Moving,
     Dead
 }

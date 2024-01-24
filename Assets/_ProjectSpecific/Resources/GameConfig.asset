@@ -14,14 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player:
     PlaneIdleSettings:
-      StartOffset: {x: 0, y: 0, z: 0}
+      StartOffset: {x: 0, y: -0.355, z: 0}
       Amplitude: 0.01
       Frequency: 50
     PlaneMovingSettings:
-      _ForwardSpeed: 8.97
+      _ForwardSpeed: 6
       _RotationSpeed: 10
       _AngleLimit: 40
       _MaxHeightOffset: 1
+    PlaneTakeOffSettings:
+      ForwardIncreaseSpeed: 1
+      ForwardMaxSpeed: 6
+      MaxDistanceToChangeState: 2
+      RotationResetSpeed: 2
   Input:
     DragSensitivity: 1
   Environment:

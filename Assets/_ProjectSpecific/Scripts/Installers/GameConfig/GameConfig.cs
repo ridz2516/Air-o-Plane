@@ -13,6 +13,7 @@ public class GameConfig : ScriptableObjectInstaller<GameConfig>
     {
         Container.BindInstance(Player.PlaneIdleSettings);
         Container.BindInstance(Player.PlaneMovingSettings);
+        Container.BindInstance(Player.PlaneTakeOffSettings);
         Container.BindInstance(Input);
 
         Container.BindInstance(Environment.ParkObstacleSettings);
@@ -31,8 +32,10 @@ public class GameConfig : ScriptableObjectInstaller<GameConfig>
 [Serializable]
 public class PlayerVariables
 {
-    public PlaneStateIdle.Settings PlaneIdleSettings;
-    public PlaneStateMoving.Settings PlaneMovingSettings;
+    public PlaneStateIdle.Settings      PlaneIdleSettings;
+    public PlaneStateMoving.Settings    PlaneMovingSettings;
+    public PlaneStateTakeOff.Settings   PlaneTakeOffSettings;
+
 }
 
 [Serializable]
