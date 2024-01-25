@@ -9,6 +9,7 @@ public class PlaneStateDead : PlaneState
     readonly Explosion.Factory  _explosionFactory;
     readonly Smoke.Factory      _SmokeFactory;
     readonly GameManager        _GameManager;
+    readonly AudioPlayer        _AudioPlayer;
 
     private float _JumpStartTime;
     private float _StartYPos;
@@ -19,13 +20,15 @@ public class PlaneStateDead : PlaneState
         Settings _Settings,
         Explosion.Factory _explosionFactory,
         Smoke.Factory _SmokeFactory,
-        GameManager _GameManager)
+        GameManager _GameManager,
+        AudioPlayer _AudioPlayer)
     {
         this._IPlayerController = _IPlayerController;
         this._Settings = _Settings;
         this._explosionFactory = _explosionFactory;
         this._SmokeFactory = _SmokeFactory;
         this._GameManager = _GameManager;
+        this._AudioPlayer = _AudioPlayer;
     }
 
     public override void Start()
@@ -57,6 +60,7 @@ public class PlaneStateDead : PlaneState
 
         _Smoke = _SmokeFactory.Create();
         _IPlayerController.TrailRenderer.emitting = false;
+        _AudioPlayer.Play(_Settings.DeathSFXClip, _Settings.SfxDeathVolume);
     }
 
     [Serializable]
@@ -65,6 +69,8 @@ public class PlaneStateDead : PlaneState
         public AnimationCurve FallDownAnimCurve;
         public float JumpHeight = 5f;
         public float JumpDuration = 1f;
+        public AudioClip DeathSFXClip;
+        public float SfxDeathVolume = 3;
     }
 
     public class Factory : PlaceholderFactory<PlaneStateDead>

@@ -11,6 +11,7 @@ public class GameBindInstaller : MonoInstaller
         InstallPlayer();
         InstallPresenter();
         InstallEnvironment();
+        InstallAudio();
 
         GameSignalInstaller.Install(Container);
     }
@@ -46,6 +47,9 @@ public class GameBindInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<EnvironmentLooper>().AsTransient();
     }
     
-
+    public void InstallAudio()
+    {
+        Container.Bind<AudioPlayer>().AsSingle();
+    }
 
 }

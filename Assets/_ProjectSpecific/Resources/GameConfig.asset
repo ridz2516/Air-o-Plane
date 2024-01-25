@@ -63,6 +63,7 @@ MonoBehaviour:
         m_RotationOrder: 4
       JumpHeight: 1
       JumpDuration: 2
+      DeathSFXClip: {fileID: 8300000, guid: 1ed8fb76fc64e4e46847348138782234, type: 3}
     PlayerDeathEffect: {fileID: 6510154188001029539, guid: a17452023896241b79a9ed92bb125cd8, type: 3}
     SmokeEffect: {fileID: 3806303252187749753, guid: 2b7a350ab05c14773bffb63955742c53, type: 3}
   Input:
