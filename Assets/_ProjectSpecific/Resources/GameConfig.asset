@@ -25,7 +25,7 @@ MonoBehaviour:
     PlaneTakeOffSettings:
       ForwardIncreaseSpeed: 8
       ForwardMaxSpeed: 6
-      MaxDistanceToChangeState: 2
+      DelayToChangeState: 0.7
       RotationResetSpeed: 3
     PlaneStateDeadSettings:
       FallDownAnimCurve:

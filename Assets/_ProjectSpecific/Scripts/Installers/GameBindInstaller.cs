@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using Zenject;
 
@@ -30,6 +29,8 @@ public class GameBindInstaller : MonoInstaller
         Container.BindFactory<PlaneStateDead, PlaneStateDead.Factory>().WhenInjectedInto<PlaneStateFactory>();
         Container.Bind(typeof(IPlayerController), typeof(IPlayerStatesHandler)).To<PlayerPlane>().FromComponentInHierarchy().AsSingle();
         Container.BindFactory<PlaneStateMoving, PlaneStateMoving.Factory>().WhenInjectedInto<PlaneStateFactory>();
+
+        Container.BindInterfacesAndSelfTo<PlayerDistanceMeasure>().AsSingle();
     }
 
     public void InstallPresenter()

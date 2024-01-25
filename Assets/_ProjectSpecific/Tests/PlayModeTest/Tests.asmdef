@@ -17,7 +17,8 @@
         "nunit.framework.dll",
         "Moq.dll",
         "Castle.Core.dll",
-        "Zenject-usage.dll"
+        "Zenject-usage.dll",
+        "DOTween.dll"
     ],
     "autoReferenced": false,
     "defineConstraints": [

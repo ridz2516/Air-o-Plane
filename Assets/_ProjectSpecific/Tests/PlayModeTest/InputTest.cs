@@ -10,8 +10,9 @@ public class InputTest
         // Arrange
         var hudControllerMock = new Mock<HUDController>();
         var inputVarsMock = new Mock<InputVariables>();
+        var distanceMeasure = new Mock<PlayerDistanceMeasure>();
 
-        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object);
+        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object, distanceMeasure.Object);
 
         // Act
         gamePlayInputPresenter.OnInputDown(Vector2.zero);
@@ -26,8 +27,9 @@ public class InputTest
     {
         var hudControllerMock = new Mock<HUDController>();
         var inputVarsMock = new Mock<InputVariables>();
+        var distanceMeasure = new Mock<PlayerDistanceMeasure>();
 
-        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object);
+        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object, distanceMeasure.Object);
 
         gamePlayInputPresenter.OnInputUp();
 
@@ -42,8 +44,9 @@ public class InputTest
     {
         var hudControllerMock = new Mock<HUDController>();
         var inputVarsMock = new Mock<InputVariables>();
+        var distanceMeasure = new Mock<PlayerDistanceMeasure>();
 
-        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object);
+        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object, distanceMeasure.Object);
         gamePlayInputPresenter.OnInputDown(Vector2.zero);
 
         gamePlayInputPresenter.SetInput(new Vector2(_X,_Y));
@@ -57,8 +60,9 @@ public class InputTest
     {
         var hudControllerMock = new Mock<HUDController>();
         var inputVarsMock = new Mock<InputVariables>();
+        var distanceMeasure = new Mock<PlayerDistanceMeasure>();
 
-        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object);
+        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object, distanceMeasure.Object);
         gamePlayInputPresenter.OnInputUp();
 
         gamePlayInputPresenter.FixedTick();

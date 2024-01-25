@@ -13,6 +13,7 @@ public class PlaneStateTakeOff : PlaneState
 
     float _CurrentRotation;
     float _CurrentSpeed;
+    float _CurrentDelay;
 
     #endregion Data
 
@@ -45,26 +46,20 @@ public class PlaneStateTakeOff : PlaneState
 
     public void Move()
     {
-        if (_GameInputPresenter.IsInputDown)
-        {
-            _CurrentSpeed = Mathf.Lerp(_CurrentSpeed, _settings.ForwardMaxSpeed, _settings.ForwardIncreaseSpeed * Time.deltaTime);
+        _CurrentSpeed = Mathf.Lerp(_CurrentSpeed, _settings.ForwardMaxSpeed, _settings.ForwardIncreaseSpeed * Time.deltaTime);
 
-            if (_CurrentSpeed >= (_settings.ForwardMaxSpeed / 2))
-                _CurrentRotation = 0;
-            else
-                _CurrentRotation = -11.05f;
-
-                _PlayerMovementHandler.Rotation = Quaternion.Lerp(_PlayerMovementHandler.Rotation, Quaternion.Euler(_CurrentRotation, 90, 0), _settings.RotationResetSpeed * Time.deltaTime);
-
-        }
+        if (_CurrentSpeed >= (_settings.ForwardMaxSpeed / 2))
+            _CurrentRotation = 0;
         else
-        {
-            _CurrentSpeed = Mathf.Lerp(_CurrentSpeed, 0, _settings.ForwardIncreaseSpeed * Time.deltaTime);
-        }
+            _CurrentRotation = -11.05f;
+
+        _PlayerMovementHandler.Rotation = Quaternion.Lerp(_PlayerMovementHandler.Rotation, Quaternion.Euler(_CurrentRotation, 90, 0), _settings.RotationResetSpeed * Time.deltaTime);
+
 
         _PlayerMovementHandler.Position += Vector3.right * _CurrentSpeed * Time.deltaTime;
+        _CurrentDelay += Time.deltaTime;
 
-        if (_CurrentSpeed >= (_settings.ForwardMaxSpeed - 0.1f))
+        if (_CurrentDelay >= _settings.DelayToChangeState)
         {
             _PlayerStatesHandler.ChangeState(ePlaneStates.Moving);
         }
@@ -77,8 +72,9 @@ public class PlaneStateTakeOff : PlaneState
         public float ForwardIncreaseSpeed;
         public float ForwardMaxSpeed;
 
-        public float MaxDistanceToChangeState = 2;
+        public float DelayToChangeState = 2;
         public float RotationResetSpeed = 2;
+
     }
 
     public class Factory : PlaceholderFactory<PlaneStateTakeOff>

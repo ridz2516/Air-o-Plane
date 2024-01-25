@@ -8,7 +8,7 @@ public class GamePlayInputPresenter : IInitializable, IDisposable, IFixedTickabl
 
     readonly HUDController  _HudController;
     readonly InputVariables _InputVars;
-    //readonly IMovementControl _PlaneStateMoving;
+    readonly PlayerDistanceMeasure _PlayerDistanceMeasure;
 
     private bool _IsInputDown;
     private Vector3 m_InputDownPosNormalized;
@@ -23,22 +23,24 @@ public class GamePlayInputPresenter : IInitializable, IDisposable, IFixedTickabl
 
     #endregion Data
 
-    public GamePlayInputPresenter(HUDController _HudController, InputVariables _InputVars)
+    public GamePlayInputPresenter(HUDController _HudController,
+        InputVariables _InputVars,
+        PlayerDistanceMeasure _PlayerDistanceMeasure)
     {
         this._HudController = _HudController;
         this._InputVars = _InputVars;
-        //this._PlaneStateMoving = _PlaneStateMoving;
+        this._PlayerDistanceMeasure = _PlayerDistanceMeasure;
     }
     public void Initialize()
     {
-        _HudController.OnInputDown += OnInputDown;
-        _HudController.OnInputUp += OnInputUp;
+        _HudController.OnInputDown  += OnInputDown;
+        _HudController.OnInputUp    += OnInputUp;
     }
 
     public void Dispose()
     {
-        _HudController.OnInputDown -= OnInputDown;
-        _HudController.OnInputUp -= OnInputUp;
+        _HudController.OnInputDown  -= OnInputDown;
+        _HudController.OnInputUp    -= OnInputUp;
     }
 
     public void OnInputDown(Vector2 _mousePosition)
@@ -60,6 +62,7 @@ public class GamePlayInputPresenter : IInitializable, IDisposable, IFixedTickabl
         {
             SetInput(Input.mousePosition);
         }
+        _HudController.DistanceText.text = _PlayerDistanceMeasure.DistanceCovered + "m";
     }
 
     public void SetInput(Vector3 _MousePos)

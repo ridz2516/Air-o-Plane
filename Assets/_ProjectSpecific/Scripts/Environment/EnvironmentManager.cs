@@ -15,6 +15,7 @@ public class EnvironmentManager : MonoBehaviour
     #region Data
 
     [SerializeField] private eEnvironmentType[] _EnvironmentType;
+    [SerializeField] private GameObject _TutorialObject;
 
     private SignalBus _SignalBus;
     private EnvironmentFactory _EnvironmentFactory;
@@ -34,6 +35,7 @@ public class EnvironmentManager : MonoBehaviour
     public void Start()
     {
         _SignalBus.Subscribe<GameManager.OnLevelRestart>(OnLevelReset);
+        _SignalBus.Subscribe<GameManager.OnLevelStarted>(OnLevelStart);
 
         foreach (var item in _EnvironmentType)
         {
@@ -48,12 +50,18 @@ public class EnvironmentManager : MonoBehaviour
         Reset();
     }
 
+    private void OnLevelStart()
+    {
+        _TutorialObject.SetActive(true);
+    }
+
     public void Update()
     {
     }
 
     public void Reset()
     {
+        _TutorialObject.SetActive(false);
         foreach (var item in _Environments)
         {
             if(item)
