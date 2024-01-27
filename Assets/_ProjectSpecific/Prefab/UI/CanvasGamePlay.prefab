@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6078165025425115580}
   - component: {fileID: 6078165025425115553}
   - component: {fileID: 6078165025425115552}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CanvasGamePlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 6078165025500965388}
   - component: {fileID: 6078165025500965390}
   - component: {fileID: 6078165025500965391}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 24.821, y: -10.084}
+  m_AnchoredPosition: {x: 24.821, y: 0}
   m_SizeDelta: {x: 190.7901, y: 42.6321}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6078165025500965390
@@ -204,8 +204,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0m
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: df81bd71be0d943ceb446fe61d81d62a, type: 2}
-  m_sharedMaterial: {fileID: -6897616390688781409, guid: df81bd71be0d943ceb446fe61d81d62a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 38bc190010660304284ff29bb948a952, type: 2}
+  m_sharedMaterial: {fileID: 4321700444072432464, guid: 38bc190010660304284ff29bb948a952, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -229,11 +229,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.6
+  m_fontSize: 37.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 37.6
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 4
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 6078165025592914894}
   - component: {fileID: 6078165025592914895}
   - component: {fileID: 6078165025592914737}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 6078165026404824643}
   - component: {fileID: 6078165026404824645}
   - component: {fileID: 6078165026404824642}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DistanceBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,8 +429,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -30.7, y: -35}
-  m_SizeDelta: {x: 287.55286, y: 95.84949}
+  m_AnchoredPosition: {x: -16, y: -21}
+  m_SizeDelta: {x: 262.5912, y: 55.4352}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &6078165026404824645
 CanvasRenderer:
@@ -453,15 +453,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5297830662381079336, guid: 3316aabd5dd7e2743ad1214e35350560, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.7
 --- !u!1 &6078165026473734544
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 6078165026473734547}
   - component: {fileID: 6078165026473734549}
   - component: {fileID: 6078165026473734546}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,7 +505,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -101.899994, y: -6.100006}
+  m_AnchoredPosition: {x: -101.899994, y: 0}
   m_SizeDelta: {x: 49.1458, y: 49.146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6078165026473734549
@@ -556,7 +556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6078165026689161938}
   - component: {fileID: 6078165026689161941}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CanvasGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}

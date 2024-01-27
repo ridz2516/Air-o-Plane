@@ -1,7 +1,4 @@
-
 using System;
-using UnityEngine;
-using UnityEngine.EventSystems;
 using Zenject;
 
 public class LevelStartPresenter : IInitializable, IDisposable
@@ -18,20 +15,16 @@ public class LevelStartPresenter : IInitializable, IDisposable
 
     public void Dispose()
     {
-        _LevelStart.PlayButton.OnDragEvent -= OnDrag;
-        //_LevelStart.PlayButton.onClick.RemoveAllListeners();
+        //_LevelStart.PlayButton.OnDragEvent -= OnDrag;
+        _LevelStart.PlayButton.onClick.RemoveAllListeners();
     }
 
     public void Initialize()
     {
-        // _LevelStart.PlayButton.onClick.AddListener(onPlayButtonClick);
-        _LevelStart.PlayButton.OnDragEvent += OnDrag;
+         _LevelStart.PlayButton.onClick.AddListener(onPlayButtonClick);
+        //_LevelStart.PlayButton.OnDragEvent += OnDrag;
     }
 
-    private void OnDrag(PointerEventData _Data)
-    {
-        onPlayButtonClick();
-    }
 
     private void onPlayButtonClick()
     {

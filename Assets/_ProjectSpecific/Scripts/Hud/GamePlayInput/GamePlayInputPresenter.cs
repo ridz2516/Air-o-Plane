@@ -45,7 +45,7 @@ public class GamePlayInputPresenter : IInitializable, IDisposable, IFixedTickabl
 
     private void onLevelStarted()
     {
-        OnInputDown(Input.mousePosition);
+        //OnInputDown(Input.mousePosition);
     }
 
     public void Dispose()
