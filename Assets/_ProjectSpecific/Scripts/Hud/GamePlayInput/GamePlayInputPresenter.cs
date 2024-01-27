@@ -9,6 +9,7 @@ public class GamePlayInputPresenter : IInitializable, IDisposable, IFixedTickabl
     readonly HUDController  _HudController;
     readonly InputVariables _InputVars;
     readonly PlayerDistanceMeasure _PlayerDistanceMeasure;
+    readonly SignalBus _SignalBus;
 
     private bool _IsInputDown;
     private Vector3 m_InputDownPosNormalized;
@@ -25,16 +26,26 @@ public class GamePlayInputPresenter : IInitializable, IDisposable, IFixedTickabl
 
     public GamePlayInputPresenter(HUDController _HudController,
         InputVariables _InputVars,
-        PlayerDistanceMeasure _PlayerDistanceMeasure)
+        PlayerDistanceMeasure _PlayerDistanceMeasure,
+        SignalBus _SignalBus)
     {
         this._HudController = _HudController;
         this._InputVars = _InputVars;
         this._PlayerDistanceMeasure = _PlayerDistanceMeasure;
+        this._SignalBus = _SignalBus;
     }
+
     public void Initialize()
     {
         _HudController.OnInputDown  += OnInputDown;
         _HudController.OnInputUp    += OnInputUp;
+
+        _SignalBus.Subscribe<GameManager.OnLevelStarted>(onLevelStarted);
+    }
+
+    private void onLevelStarted()
+    {
+        OnInputDown(Input.mousePosition);
     }
 
     public void Dispose()

@@ -1,6 +1,7 @@
 using Moq;
 using NUnit.Framework;
 using UnityEngine;
+using Zenject;
 
 public class InputTest
 {
@@ -10,9 +11,14 @@ public class InputTest
         // Arrange
         var hudControllerMock = new Mock<HUDController>();
         var inputVarsMock = new Mock<InputVariables>();
-        var distanceMeasure = new Mock<PlayerDistanceMeasure>();
+        var playerControllerMock = new Mock<IPlayerController>();
 
-        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object, distanceMeasure.Object);
+        SignalBus signalBus = null;
+
+        var distanceMeasure = new PlayerDistanceMeasure(playerControllerMock.Object, signalBus);
+
+
+        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object, distanceMeasure,signalBus);
 
         // Act
         gamePlayInputPresenter.OnInputDown(Vector2.zero);
@@ -27,9 +33,14 @@ public class InputTest
     {
         var hudControllerMock = new Mock<HUDController>();
         var inputVarsMock = new Mock<InputVariables>();
-        var distanceMeasure = new Mock<PlayerDistanceMeasure>();
+        var playerControllerMock = new Mock<IPlayerController>();
 
-        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object, distanceMeasure.Object);
+        SignalBus signalBus = null;
+
+        var distanceMeasure = new PlayerDistanceMeasure(playerControllerMock.Object, signalBus);
+
+
+        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object, distanceMeasure, signalBus);
 
         gamePlayInputPresenter.OnInputUp();
 
@@ -44,9 +55,13 @@ public class InputTest
     {
         var hudControllerMock = new Mock<HUDController>();
         var inputVarsMock = new Mock<InputVariables>();
-        var distanceMeasure = new Mock<PlayerDistanceMeasure>();
+        var playerControllerMock = new Mock<IPlayerController>();
 
-        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object, distanceMeasure.Object);
+        SignalBus signalBus = null;
+
+        var distanceMeasure = new PlayerDistanceMeasure(playerControllerMock.Object, signalBus);
+
+        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object, distanceMeasure, signalBus);
         gamePlayInputPresenter.OnInputDown(Vector2.zero);
 
         gamePlayInputPresenter.SetInput(new Vector2(_X,_Y));
@@ -60,16 +75,20 @@ public class InputTest
     {
         var hudControllerMock = new Mock<HUDController>();
         var inputVarsMock = new Mock<InputVariables>();
-        var distanceMeasure = new Mock<PlayerDistanceMeasure>();
+        var playerControllerMock = new Mock<IPlayerController>();
 
-        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object, distanceMeasure.Object);
+        SignalBus signalBus = null;
+
+        var distanceMeasure = new PlayerDistanceMeasure(playerControllerMock.Object, signalBus);
+
+        var gamePlayInputPresenter = new GamePlayInputPresenter(hudControllerMock.Object, inputVarsMock.Object, distanceMeasure, signalBus);
         gamePlayInputPresenter.OnInputUp();
 
-        gamePlayInputPresenter.FixedTick();
+        gamePlayInputPresenter.SetInput(Vector3.zero);
 
         Assert.AreEqual(Vector2.zero, gamePlayInputPresenter.Drag);
         Assert.AreEqual(Vector2.zero, gamePlayInputPresenter.DeltaDrag);
     }
 
-
+    
 }

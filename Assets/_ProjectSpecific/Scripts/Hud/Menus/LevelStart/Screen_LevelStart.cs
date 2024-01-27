@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class Screen_LevelStart : MonoBehaviour, IMenuView
 {
-    public Button PlayButton;
-    public Button TutorialButton;
+    public ExtendedButton PlayButton;
 
     public void Hide()
     {

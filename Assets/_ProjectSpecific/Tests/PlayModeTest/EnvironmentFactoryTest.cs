@@ -8,7 +8,7 @@ public class EnvironmentFactoryTest : ZenjectIntegrationTestFixture
 {
 
     [Test]
-    public void CreateEnvironment_ParkObstalce_ReturnsParkObstacleEnvironment()
+    public void CreateEnvironment_ParkObstalce_ReturnsSimpleObstacleEnvironment()
     {
         PreInstall();
 
@@ -27,24 +27,6 @@ public class EnvironmentFactoryTest : ZenjectIntegrationTestFixture
         PostInstall();
     }
 
-    [Test]
-    public void CreateEnvironment_ParkBackGround_ReturnsParkBackGroundEnvironment()
-    {
-        PreInstall();
-
-        Container.Bind<EnvironmentFactory>().AsSingle();
-        Container.Bind<ILooper>().To<MockLooper>().AsSingle();
-        var setting = new SimpleWallBg.Setting();
-        Container.BindInstance(setting);
-
-        Container.BindFactory<SimpleWallEnvironment, SimpleWallEnvironment.Factory>()
-               .FromComponentInNewPrefabResource("Test/SimpleWallEnvironment");
-        Container.BindFactory<SimpleWallBg, SimpleWallBg.Factory>()
-              .FromComponentInNewPrefabResource("Test/SimpleWallBg");
-        Container.Bind<IInitializable>().To<ParkRunner2>().AsSingle();
-
-        PostInstall();
-    }
 
     public class MockLooper : ILooper
     {

@@ -13,6 +13,7 @@ public class PlayerDistanceMeasure: IInitializable, ITickable
 
 
     #endregion Data
+    
 
     public PlayerDistanceMeasure(IPlayerController _PlayerController, SignalBus _SignalBus)
     {

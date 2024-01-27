@@ -270,6 +270,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6078165025425115583, guid: 61c4e60a0ff0d4ef3850f55cd330dd08, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6078165025425115583, guid: 61c4e60a0ff0d4ef3850f55cd330dd08, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 6078165025425115583, guid: 61c4e60a0ff0d4ef3850f55cd330dd08, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 6078165026404824643, guid: 61c4e60a0ff0d4ef3850f55cd330dd08, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -30.699951
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61c4e60a0ff0d4ef3850f55cd330dd08, type: 3}
 --- !u!224 &3839918609890155688 stripped
@@ -284,6 +300,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3839918610639026965}
     m_Modifications:
+    - target: {fileID: 6227096744107020483, guid: 36976e2721a4947648870a953d3586f1, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227096744107020483, guid: 36976e2721a4947648870a953d3586f1, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227096744107020483, guid: 36976e2721a4947648870a953d3586f1, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1920
+      objectReference: {fileID: 0}
     - target: {fileID: 6227096745095949604, guid: 36976e2721a4947648870a953d3586f1, type: 3}
       propertyPath: m_RootOrder
       value: 1
