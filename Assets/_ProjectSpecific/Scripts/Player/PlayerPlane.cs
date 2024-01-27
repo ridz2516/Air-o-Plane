@@ -17,7 +17,6 @@ public class PlayerPlane : MonoBehaviour, IPlayerController, IPlayerStatesHandle
     private Vector3 _InitialPosition;
 
 
-
     #endregion Data
 
     #region Initialize
@@ -44,7 +43,7 @@ public class PlayerPlane : MonoBehaviour, IPlayerController, IPlayerStatesHandle
 
     private void OnLevelStarted()
     {
-        ChangeState(ePlaneStates.TakeOff);
+        ChangeState(ePlaneStates.Moving);
     }
 
     private void OnLevelReset()
@@ -65,7 +64,7 @@ public class PlayerPlane : MonoBehaviour, IPlayerController, IPlayerStatesHandle
 
     #region Unity Physics
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter(Collider collision)
     {
         _PlayerState.OnTriggerEnter(collision);
     }

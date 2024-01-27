@@ -15,11 +15,11 @@ public class EnvironmentFactoryTest : ZenjectIntegrationTestFixture
         Container.Bind<EnvironmentFactory>().AsSingle();
 
         Container.Bind<ILooper>().To<MockLooper>().AsSingle();
-        var setting = new ParkObstacleEnvironment.Setting();
+        var setting = new SimpleWallEnvironment.Setting();
         Container.BindInstance(setting);
 
-        Container.BindFactory<ParkObstacleEnvironment, ParkObstacleEnvironment.Factory>()
-               .FromComponentInNewPrefabResource("Test/ParkObstacleEnvironment");
+        Container.BindFactory<SimpleWallEnvironment, SimpleWallEnvironment.Factory>()
+               .FromComponentInNewPrefabResource("Test/SimpleWallEnvironment");
         
 
         Container.Bind<IInitializable>().To<ParkRunner>().AsSingle();
@@ -34,13 +34,13 @@ public class EnvironmentFactoryTest : ZenjectIntegrationTestFixture
 
         Container.Bind<EnvironmentFactory>().AsSingle();
         Container.Bind<ILooper>().To<MockLooper>().AsSingle();
-        var setting = new ParkBackgroundEnvironment.Setting();
+        var setting = new SimpleWallBg.Setting();
         Container.BindInstance(setting);
 
-        Container.BindFactory<ParkBackgroundEnvironment, ParkBackgroundEnvironment.Factory>()
-               .FromComponentInNewPrefabResource("Test/ParkBackGround");
-        Container.BindFactory<ParkObstacleEnvironment, ParkObstacleEnvironment.Factory>()
-              .FromComponentInNewPrefabResource("Test/ParkObstacleEnvironment");
+        Container.BindFactory<SimpleWallEnvironment, SimpleWallEnvironment.Factory>()
+               .FromComponentInNewPrefabResource("Test/SimpleWallEnvironment");
+        Container.BindFactory<SimpleWallBg, SimpleWallBg.Factory>()
+              .FromComponentInNewPrefabResource("Test/SimpleWallBg");
         Container.Bind<IInitializable>().To<ParkRunner2>().AsSingle();
 
         PostInstall();
@@ -69,11 +69,11 @@ public class EnvironmentFactoryTest : ZenjectIntegrationTestFixture
 
         public void Initialize()
         {
-            var environment = _Factory.CreateEnvironment(eEnvironmentType.ParkObstacles);
+            var environment = _Factory.CreateEnvironment(eEnvironmentType.SimpleWallEnvo);
             environment.Activate();
 
             Assert.IsNotNull(environment);
-            Assert.IsTrue(environment is ParkObstacleEnvironment);
+            Assert.IsTrue(environment is SimpleWallEnvironment);
         }
     }
 
@@ -89,11 +89,11 @@ public class EnvironmentFactoryTest : ZenjectIntegrationTestFixture
 
         public void Initialize()
         {
-            var environment = _Factory.CreateEnvironment(eEnvironmentType.ParkBackground);
+            var environment = _Factory.CreateEnvironment(eEnvironmentType.SimpleWallBG);
             environment.Activate();
 
             Assert.IsNotNull(environment);
-            Assert.IsTrue(environment is ParkBackgroundEnvironment);
+            Assert.IsTrue(environment is SimpleWallBg);
         }
     }
 

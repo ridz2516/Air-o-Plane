@@ -7,14 +7,12 @@ public class LevelStartPresenter : IInitializable, IDisposable
 {
     readonly GameManager _GameManager;
     readonly Screen_LevelStart  _LevelStart;
-    //readonly IPlayerStatesHandler _IPlayerState;
 
     
     public LevelStartPresenter(Screen_LevelStart _LevelStart, GameManager _GameManager)
     {
         this._LevelStart = _LevelStart;
         this._GameManager = _GameManager;
-        //this._IPlayerState = _IPlayerState;
     }
 
     public void Dispose()
@@ -31,6 +29,5 @@ public class LevelStartPresenter : IInitializable, IDisposable
     {
         _LevelStart.Hide();
         _GameManager.LevelStarted();
-        //_IPlayerState.ChangeState(ePlaneStates.TakeOff);
     }
 }

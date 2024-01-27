@@ -15,18 +15,13 @@ MonoBehaviour:
   Player:
     PlaneIdleSettings:
       StartOffset: {x: 0, y: -0.355, z: 0}
-      Amplitude: 0.01
-      Frequency: 50
+      Amplitude: 0.2
+      Frequency: 3
     PlaneMovingSettings:
-      _ForwardSpeed: 6
+      _ForwardSpeed: 5
       _RotationSpeed: 10
-      _AngleLimit: 40
-      _MaxHeightOffset: 1
-    PlaneTakeOffSettings:
-      ForwardIncreaseSpeed: 8
-      ForwardMaxSpeed: 6
-      DelayToChangeState: 0.7
-      RotationResetSpeed: 3
+      _AngleLimit: 60
+      _MaxHeightOffset: -3
     PlaneStateDeadSettings:
       FallDownAnimCurve:
         serializedVersion: 2
@@ -64,14 +59,12 @@ MonoBehaviour:
       JumpHeight: 1
       JumpDuration: 2
       DeathSFXClip: {fileID: 8300000, guid: 1ed8fb76fc64e4e46847348138782234, type: 3}
-    PlayerDeathEffect: {fileID: 6510154188001029539, guid: a17452023896241b79a9ed92bb125cd8, type: 3}
+      SfxDeathVolume: 3
+    PlayerDeathEffect: {fileID: 1352202380282331840, guid: 55417e0f6b4a244ffb12ba15445b14f5, type: 3}
     SmokeEffect: {fileID: 3806303252187749753, guid: 2b7a350ab05c14773bffb63955742c53, type: 3}
   Input:
     DragSensitivity: 1
   Environment:
-    ParkObstacleSettings:
-      ParkObstacleObject: {fileID: 8985325341478048017, guid: 5f67c4ed10b174d078587efe755d9a95, type: 3}
-      MaxDistanceBetweenEnvironment: 6
-    ParkBackgroundSettings:
-      ParkBackgroundObject: {fileID: 5667593349049114233, guid: 250422de619804beaa8881d828f75a62, type: 3}
-      MaxDistanceBetweenEnvironment: -6
+    SimpleWallEnvirSettings:
+      WallsObject: {fileID: 2999574640471825798, guid: c8fcec7e254f144a9a7ef05e4566ecb8, type: 3}
+      MaxDistanceBetweenEnvironment: 0

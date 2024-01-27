@@ -7,6 +7,8 @@ public class GameBindInstaller : MonoInstaller
     [SerializeField] GameObject Object;
     public override void InstallBindings()
     {
+
+        InstallCamera();
         InstallGameManager();
         InstallPlayer();
         InstallPresenter();
@@ -26,7 +28,6 @@ public class GameBindInstaller : MonoInstaller
         Container.Bind<PlaneStateFactory>().AsSingle();
 
         Container.BindFactory<PlaneStateIdle, PlaneStateIdle.Factory>().WhenInjectedInto<PlaneStateFactory>();
-        Container.BindFactory<PlaneStateTakeOff, PlaneStateTakeOff.Factory>().WhenInjectedInto<PlaneStateFactory>();
         Container.BindFactory<PlaneStateDead, PlaneStateDead.Factory>().WhenInjectedInto<PlaneStateFactory>();
         Container.Bind(typeof(IPlayerController), typeof(IPlayerStatesHandler)).To<PlayerPlane>().FromComponentInHierarchy().AsSingle();
         Container.BindFactory<PlaneStateMoving, PlaneStateMoving.Factory>().WhenInjectedInto<PlaneStateFactory>();
@@ -50,6 +51,11 @@ public class GameBindInstaller : MonoInstaller
     public void InstallAudio()
     {
         Container.Bind<AudioPlayer>().AsSingle();
+    }
+
+    public void InstallCamera()
+    {
+        Container.BindInterfacesAndSelfTo<CameraController>().AsSingle();
     }
 
 }

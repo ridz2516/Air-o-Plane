@@ -9,24 +9,23 @@ public interface IEnvironmentFactory
 
 public class EnvironmentFactory : IEnvironmentFactory
 {
-    
-    readonly ParkObstacleEnvironment.Factory _ParkObstacleFactory;
-    readonly ParkBackgroundEnvironment.Factory _ParkBackgroundFactory;
+    readonly SimpleWallEnvironment.Factory  _SimpleWallEnvoFactory;
+    readonly SimpleWallBg.Factory           _SimpleWallBg;
 
-    public EnvironmentFactory(ParkObstacleEnvironment.Factory _ParkObstacleFactory, ParkBackgroundEnvironment.Factory _ParkBackgroundFactory)
+    public EnvironmentFactory(SimpleWallEnvironment.Factory _SimpleWallEnvoFactory)
     {
-        this._ParkObstacleFactory = _ParkObstacleFactory;
-        this._ParkBackgroundFactory = _ParkBackgroundFactory;
+        this._SimpleWallEnvoFactory = _SimpleWallEnvoFactory;
     }
 
     public Environment CreateEnvironment(eEnvironmentType environmentType)
     {
         switch (environmentType)
         {
-            case eEnvironmentType.ParkObstacles:
-                return _ParkObstacleFactory.Create();
-            case eEnvironmentType.ParkBackground:
-                return _ParkBackgroundFactory.Create();
+            case eEnvironmentType.SimpleWallEnvo:
+                return _SimpleWallEnvoFactory.Create();
+
+            case eEnvironmentType.SimpleWallBG:
+                return _SimpleWallBg.Create();
         }
         return null;
     }

@@ -6,8 +6,8 @@ using Zenject;
 
 public enum eEnvironmentType
 {
-    ParkBackground,
-    ParkObstacles
+    SimpleWallEnvo,
+    SimpleWallBG
 }
 
 public class EnvironmentManager : MonoBehaviour

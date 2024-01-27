@@ -13,7 +13,6 @@ public class GameConfig : ScriptableObjectInstaller<GameConfig>
     {
         Container.BindInstance(Player.PlaneIdleSettings);
         Container.BindInstance(Player.PlaneMovingSettings);
-        Container.BindInstance(Player.PlaneTakeOffSettings);
         Container.BindInstance(Player.PlaneStateDeadSettings);
 
         Container.BindFactory<Explosion, Explosion.Factory>()
@@ -30,15 +29,11 @@ public class GameConfig : ScriptableObjectInstaller<GameConfig>
 
         Container.BindInstance(Input);
 
-        Container.BindInstance(Environment.ParkObstacleSettings);
-        Container.BindFactory<ParkObstacleEnvironment, ParkObstacleEnvironment.Factory>()
-               .FromComponentInNewPrefab(Environment.ParkObstacleSettings.ParkObstacleObject)
+        Container.BindInstance(Environment.SimpleWallEnvirSettings);
+        Container.BindFactory<SimpleWallEnvironment, SimpleWallEnvironment.Factory>()
+               .FromComponentInNewPrefab(Environment.SimpleWallEnvirSettings.WallsObject)
                .UnderTransformGroup("Environment");
 
-        Container.BindInstance(Environment.ParkBackgroundSettings);
-        Container.BindFactory<ParkBackgroundEnvironment, ParkBackgroundEnvironment.Factory>()
-               .FromComponentInNewPrefab(Environment.ParkBackgroundSettings.ParkBackgroundObject)
-               .UnderTransformGroup("Environment");
     }
 
     class ExplosionPool : MonoPoolableMemoryPool<IMemoryPool, Explosion>
@@ -56,7 +51,6 @@ public class PlayerVariables
 {
     public PlaneStateIdle.Settings      PlaneIdleSettings;
     public PlaneStateMoving.Settings    PlaneMovingSettings;
-    public PlaneStateTakeOff.Settings   PlaneTakeOffSettings;
     public PlaneStateDead.Settings      PlaneStateDeadSettings;
 
     public GameObject PlayerDeathEffect;
@@ -72,8 +66,7 @@ public class InputVariables
 [Serializable]
 public class EnvironmentConfig
 {
-    public ParkObstacleEnvironment.Setting ParkObstacleSettings;
-    public ParkBackgroundEnvironment.Setting ParkBackgroundSettings;
+    public SimpleWallEnvironment.Setting SimpleWallEnvirSettings;
 }
 
 

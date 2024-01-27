@@ -63,7 +63,7 @@ public class PlaneStateMoving : PlaneState, IMovementControl
 
     #region Physics
 
-    public override void OnTriggerEnter(Collider2D other)
+    public override void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(nameof(eTags.Environment)))
         {

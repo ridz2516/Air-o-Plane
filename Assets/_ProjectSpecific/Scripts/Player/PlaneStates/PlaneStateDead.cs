@@ -7,7 +7,6 @@ public class PlaneStateDead : PlaneState
     readonly IPlayerController  _IPlayerController;
     readonly Settings           _Settings;
     readonly Explosion.Factory  _explosionFactory;
-    readonly Smoke.Factory      _SmokeFactory;
     readonly GameManager        _GameManager;
     readonly AudioPlayer        _AudioPlayer;
 
@@ -19,14 +18,12 @@ public class PlaneStateDead : PlaneState
     public PlaneStateDead(IPlayerController _IPlayerController,
         Settings _Settings,
         Explosion.Factory _explosionFactory,
-        Smoke.Factory _SmokeFactory,
         GameManager _GameManager,
         AudioPlayer _AudioPlayer)
     {
         this._IPlayerController = _IPlayerController;
         this._Settings = _Settings;
         this._explosionFactory = _explosionFactory;
-        this._SmokeFactory = _SmokeFactory;
         this._GameManager = _GameManager;
         this._AudioPlayer = _AudioPlayer;
     }
@@ -50,7 +47,7 @@ public class PlaneStateDead : PlaneState
 
         _IPlayerController.Position = new Vector3(_IPlayerController.Position.x, _StartYPos + yPosition, _IPlayerController.Position.z);
 
-        _Smoke.transform.position = _IPlayerController.Position;
+        
     }
 
     private void explode()
@@ -58,7 +55,6 @@ public class PlaneStateDead : PlaneState
         var explosion = _explosionFactory.Create();
         explosion.transform.position = _IPlayerController.Position;
 
-        _Smoke = _SmokeFactory.Create();
         _IPlayerController.TrailRenderer.emitting = false;
         _AudioPlayer.Play(_Settings.DeathSFXClip, _Settings.SfxDeathVolume);
     }

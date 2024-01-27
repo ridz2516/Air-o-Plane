@@ -11,5 +11,5 @@ public abstract class PlaneState: IDisposable
 
     public virtual void Dispose(){}
 
-    public virtual void OnTriggerEnter(Collider2D other) { }
+    public virtual void OnTriggerEnter(Collider other) { }
 }
