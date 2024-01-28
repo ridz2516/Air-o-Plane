@@ -3,35 +3,66 @@ Air-o-Plane Project 🛩️
 </h1>
 
 ## Hello Fellow Detectives! 👋
+## Description
+Air-O-Plane is a Unity gliding game where players navigate through the environment, avoiding collisions. The game is a work in progress, with continuous updates planned to enhance gameplay.
 
-Welcome to the Air-o-Plane project! 🚀 In this small and simple project, I've embarked on a coding journey to showcase my skills in code structure using **Zenject DI**, incorporating various design patterns like **Factory, MVP, MVC,** etc and adhering to **SOLID principles** for a modular and clean architecture.
+## Controls
+- Drag up or down to glide in the respective direction.
 
-## Project Overview 📁
+## Features
+- Glide through a dynamic environment.
+- Avoid collisions with obstacles.
+- Basic player controls with drag gestures.
+- Modular design principles for maintainability.
+- Zenject for dependency injection so classes are not coupled.
+- NUnit testing for ensuring code reliability.
 
-### Game Description 🕹️
-Air-o-Plane is a retro-style game where you take on the role of a pilot and aim to achieve the maximum distance without any collisions. Get ready to navigate through challenging obstacles and test your flying skills in this exciting adventure!
+## Installation
+1. Clone the repository.
+2. Open the project in Unity (version 21.3.2f1).
+3. Navigate to the `Assets/Scenes` folder and open the `MainScene.unity` file.
+4. Press the play button to run the game.
 
-## Technology Stack 🛠️
+## File Structure
+- **Art**: Contains art-related assets.
+- **3rdParty**: Holds third-party assets.
+- **Scripts**: All C# scripts for the project.
+- ...
 
-**Unity Game Engine**:- The core engine for game development.<br>
-**Zenject DI**:- Used for dependency injection to promote modularity and maintainability.<br>
-**Design Patterns**:- Employed Factory, MVP, MVC patterns etc for an organized and scalable codebase.<br>
-**SOLID Principles**:- Ensured adherence to SOLID principles for robust and flexible code.<br>
-**Unity Test Framework with NUni**t:- Implemented testing to ensure the reliability of the codebase.
+## Design Principles
+The project follows modular design principles such as **(Factories, Observer, MVP, MVC , and SOLID Principles)** for better maintainability and extensibility. Each category of scripts has its own folder, promoting a clean and organised codebase.
 
-## Work in Progress 🚧
+## Zenject Setup
+- **GameBindInstaller**: Binds normal classes.
+- **GameConfig**: Binds Scriptable objects and instances used in the class.
+- ...
 
-This project is a continuous **work in progress**, and I encourage you to explore the codebase and provide feedback. Feel free to share your thoughts and suggestions to help me improve and refine the project.
+## Player Class
+The `Player` class is designed with basic functionality, utilizing a factory to obtain different player states. Current states include:
+- PlayerMovingState
+- PlayerIdleState
+- PlayerDeadState
 
-### How to Contribute 🤝
+More states can be added in the future to enhance gameplay.
 
-If you'd like to contribute to the project, here's how you can get started:
+## Testing 🧪
+The project includes NUnit testing to ensure the reliability of the code. Tests cover critical functionalities and can be found in the `Tests` folder.
 
-Clone the Repository: Fork and clone the Air-o-Plane repository to your local machine.
-Explore the Code: Dive into the codebase and familiarize yourself with the structure.
-Give Feedback: Share your comments, suggestions, or report issues. Your input is highly valued!
+## Currently Working On
+- adding different type of obstacles example (Indiana jones style rolling rock following, Moving Platforms etc).
 
-### Testing 🧪
+## Future Enhancements
+Continuously update the game with new elements to make it more fun.
+- Implement scoring system.
+- Improve gliding mechanics.
+- Consumable items
+- ...
 
-The project utilizes Unity Test Framework with NUnit for testing purposes. Ensure that tests are passing and consider adding new tests as the project evolves.
+## Contributing
+Feel free to contribute by forking the repository and submitting pull requests.
+
+
+## Contact
+For questions or feedback, contact at ridz_92@outlook.com
+
  
