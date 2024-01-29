@@ -6,6 +6,10 @@ Air-o-Plane Project 🛩️
 ## Description
 Air-O-Plane is a Unity gliding game where players navigate through the environment, avoiding collisions. The game is a work in progress, with continuous updates planned to enhance gameplay.
 
+<div align="center" width="50">
+  <kbd><img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWV5YzAxcW93bGVvZGc1Yzdyc3JkaDZnYzJ2ZHdndHlqcnppbnVmcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SOJHDkYW8aYWxZKawA/giphy-downsized-large.gif" alt="Welcome!" width="300"/></kbd>
+</div>
+
 ## Controls
 - Drag up or down to glide in the respective direction.
 
