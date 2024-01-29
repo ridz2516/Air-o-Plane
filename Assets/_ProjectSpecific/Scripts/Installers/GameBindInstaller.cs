@@ -13,6 +13,7 @@ public class GameBindInstaller : MonoInstaller
         InstallPlayer();
         InstallPresenter();
         InstallEnvironment();
+        InstallObstacle();
         InstallAudio();
 
         GameSignalInstaller.Install(Container);
@@ -56,6 +57,14 @@ public class GameBindInstaller : MonoInstaller
     public void InstallCamera()
     {
         Container.BindInterfacesAndSelfTo<CameraController>().AsSingle();
+    }
+
+    public void InstallObstacle()
+    {
+        Container.Bind<ObstacleFactory>().AsSingle();
+        Container.BindFactory<ObstacleMoving, ObstacleMoving.Factory>().WhenInjectedInto<ObstacleFactory>();
+        Container.BindFactory<ObstacleIndianaState, ObstacleIndianaState.Factory>().WhenInjectedInto<ObstacleFactory>();
+
     }
 
 }

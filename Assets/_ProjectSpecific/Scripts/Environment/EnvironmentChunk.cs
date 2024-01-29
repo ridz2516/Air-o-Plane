@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class EnvironmentChunk : MonoBehaviour, IEnvironmentChunk
 {
-    [SerializeField] private Transform _EndPoint;
+    [SerializeField] private Transform  _EndPoint;
+
 
     public Transform GetEndPoint()
     {

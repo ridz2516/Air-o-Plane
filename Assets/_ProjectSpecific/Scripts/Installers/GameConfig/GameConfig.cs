@@ -5,9 +5,10 @@ using Zenject;
 [CreateAssetMenu(fileName = "GameConfig")]
 public class GameConfig : ScriptableObjectInstaller<GameConfig>
 {
-    public PlayerVariables Player = new PlayerVariables();
-    public InputVariables Input = new InputVariables();
-    public EnvironmentConfig Environment = new EnvironmentConfig();
+    public PlayerVariables Player           = new PlayerVariables();
+    public InputVariables Input             = new InputVariables();
+    public EnvironmentConfig Environment    = new EnvironmentConfig();
+    public ObstacleConfig Obstacle          = new ObstacleConfig();
 
     public override void InstallBindings()
     {
@@ -34,6 +35,14 @@ public class GameConfig : ScriptableObjectInstaller<GameConfig>
                .FromComponentInNewPrefab(Environment.SimpleWallEnvirSettings.WallsObject)
                .UnderTransformGroup("Environment");
 
+        InstallObstacleBindings();
+
+    }
+
+    public void InstallObstacleBindings()
+    {
+        Container.BindInstance(Obstacle.ObstacleMoveSettings);
+        Container.BindInstance(Obstacle.ObstacleIndianaSettings);
     }
 
     class ExplosionPool : MonoPoolableMemoryPool<IMemoryPool, Explosion>
@@ -67,6 +76,13 @@ public class InputVariables
 public class EnvironmentConfig
 {
     public SimpleWallEnvironment.Setting SimpleWallEnvirSettings;
+}
+
+[Serializable]
+public class ObstacleConfig
+{
+    public ObstacleMoving.Settings          ObstacleMoveSettings;
+    public ObstacleIndianaState.Settings    ObstacleIndianaSettings;
 }
 
 

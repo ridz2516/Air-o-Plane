@@ -68,3 +68,67 @@ MonoBehaviour:
     SimpleWallEnvirSettings:
       WallsObject: {fileID: 2999574640471825798, guid: c8fcec7e254f144a9a7ef05e4566ecb8, type: 3}
       MaxDistanceBetweenEnvironment: 0
+  Obstacle:
+    ObstacleMoveSettings:
+      MoveSpeed: 1
+      MoveDelay: 2
+      MoveAnimCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    ObstacleIndianaSettings:
+      MoveSpeed: 3
+      MoveDelay: 0
+      MoveAnimCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0.49079823
+          outSlope: 0.49079823
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.334132
+        - serializedVersion: 3
+          time: 0.7403819
+          value: 1.1086278
+          inSlope: 3.6987693
+          outSlope: 3.6987693
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.14524373
+          outWeight: 0.32593295
+        - serializedVersion: 3
+          time: 1
+          value: 2
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
